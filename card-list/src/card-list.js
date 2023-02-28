@@ -59,7 +59,11 @@ class CardList extends LitElement {
 
   render() {
     return html`
-
+<university-class-card>My Classes</university-class-card>
+  <university-class-card>IST 256</university-class-card>
+  <university-class-card>METEO 3</university-class-card>
+  <university-class-card>SRA 365</university-class-card>
+  <university-class-card>GEOG 260</university-class-card>
     `;
   }
 }
