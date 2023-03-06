@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "lit": "^2.6.1",
+    "sports-card": "^1.0.0",
     "university-class-card": "^0.0.0"
   },
   "devDependencies": {

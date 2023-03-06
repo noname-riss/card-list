@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import "university-class-card/src/university-class-card";
+import "sports-card/src/sports-card";
 
 
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
@@ -11,14 +12,7 @@ class CardList extends LitElement {
 
   static styles = css`
     university-class-card{
-    border: 5px solid black;
-    background-color: blue;
     display: inline-flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 400px;
-    flex-direction: column;
-    align-items: center;
   }
   `;
 
@@ -34,6 +28,11 @@ class CardList extends LitElement {
   <university-class-card>METEO 3</university-class-card>
   <university-class-card>SRA 365</university-class-card>
   <university-class-card>GEOG 260</university-class-card>
+  <sports-card>Test1</sports-card>
+  <sports-card>Test2</sports-card>
+  <sports-card>Test3</sports-card>
+  <sports-card>Test4</sports-card>
+  <sports-card>Test5</sports-card>
     `;
   }
 }
