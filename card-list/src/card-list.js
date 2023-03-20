@@ -10,29 +10,63 @@ class CardList extends LitElement {
     header: { type: String },
   }
 
-  static styles = css`
-    university-class-card{
-    display: inline-flex;
+  static get properties(){
+    return{
+      classes: {type: Array},
+      universityName: {type: String},
+    }
   }
-  `;
 
-  constructor() {
+  constructor()
+  {
     super();
-    this.header = 'My app';
+    this.classes=[];
+    this.universityName="Penn State";
+    this.updateClasses();
   }
 
-  render() {
+ updateClasses(){
+  const address=new URL('../assets/array-list.json',import.meta.url).href;
+  const data=fetch(address).then((response) =>{
+    if(response.ok){
+       return response.json();
+    }
+    return [];
+   })
+   .then((data)=>{
+  this.classes=data;
+  });
+  }
+
+  static get styles(){
+    return css`
+    :host{
+      display: block;
+    }
+    .wrapper{
+      border: 2px solid black;
+      display: flex;
+    }
+    .item{
+      display: inline-flex;
+    }
+
+    `
+  }
+
+
+
+  render(){
     return html`
-<university-class-card>My Classes</university-class-card>
-  <university-class-card>IST 256</university-class-card>
-  <university-class-card>METEO 3</university-class-card>
-  <university-class-card>SRA 365</university-class-card>
-  <university-class-card>GEOG 260</university-class-card>
-  <sports-card>Test1</sports-card>
-  <sports-card>Test2</sports-card>
-  <sports-card>Test3</sports-card>
-  <sports-card>Test4</sports-card>
-  <sports-card>Test5</sports-card>
+    <div class="wrapper">
+      ${this.classes.map(className => html`
+      <div class="item">
+        <university-class-card university="${className.university}" class="${className.class}" bottomImageText="${className.bottomImageText}" topImageText="${className.topImageText}" alternateColor="${className.alternateColor}">
+  </university-class-card>
+        </div>
+
+      `)}
+      </div>
     `;
   }
 }
