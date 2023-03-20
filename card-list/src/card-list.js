@@ -25,15 +25,11 @@ class CardList extends LitElement {
     this.updateClasses();
   }
 
- updateClasses() {
+updateClasses() {
   const address = new URL('../assets/array-list.json',import.meta.url).href;
-  const data = fetch(address).then((response) =>{
-    if(response.ok){
+ const data = fetch(address).then((response) =>{
        return response.json();
-    }
-    return [];
-   })
-   .then((data)=>{
+   }).then((data)=>{
   this.classes = data;
   });
   console.log(data);
@@ -59,11 +55,12 @@ class CardList extends LitElement {
 
   render(){
     return html`
+    <h2>${this.universityName}</h2>
     <div class="wrapper">
       ${this.classes.map(className => html`
       <div class="item">
         <university-class-card university="${className.university}" class="${className.class}" bottomImageText="${className.bottomImageText}" topImageText="${className.topImageText}" alternateColor="${className.alternateColor}">
-  </university-class-card>
+        </university-class-card>
         </div>
 
       `)}
