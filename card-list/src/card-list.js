@@ -25,17 +25,18 @@ class CardList extends LitElement {
     this.updateClasses();
   }
 
- updateClasses(){
-  const address=new URL('../assets/array-list.json',import.meta.url).href;
-  const data=fetch(address).then((response) =>{
+ updateClasses() {
+  const address = new URL('../assets/array-list.json',import.meta.url).href;
+  const data = fetch(address).then((response) =>{
     if(response.ok){
        return response.json();
     }
     return [];
    })
    .then((data)=>{
-  this.classes=data;
+  this.classes = data;
   });
+  console.log(data);
   }
 
   static get styles(){
