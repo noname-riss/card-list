@@ -6,9 +6,7 @@ import "sports-card/src/sports-card";
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
 class CardList extends LitElement {
-  static properties = {
-    header: { type: String },
-  }
+
 
   static get properties(){
     return{
@@ -25,14 +23,14 @@ class CardList extends LitElement {
     this.updateClasses();
   }
 
-updateClasses() {
+ updateClasses() {
   const address = new URL('../assets/array-list.json',import.meta.url).href;
- const data = fetch(address).then((response) =>{
+ fetch(address).then((response) =>{
        return response.json();
    }).then((data)=>{
   this.classes = data;
   });
-  console.log(data);
+ console.log(data);
   }
 
   static get styles(){
