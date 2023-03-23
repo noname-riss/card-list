@@ -30,7 +30,6 @@ class CardList extends LitElement {
    }).then((data)=>{
   this.classes = data;
   });
- console.log(data);
   }
 
   static get styles(){
